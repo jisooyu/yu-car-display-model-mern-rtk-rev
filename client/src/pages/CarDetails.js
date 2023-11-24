@@ -3,7 +3,7 @@ import { useThunk } from '../hooks/use-thunk';
 import { deleteData } from '../store/thunks/deleteData';
 import Button from '../components/Button';
 
-function CarDetails({ data }) {
+function CarDetails({ data, searchTerm }) {
 	const [runDeleteData, , deleteDataError] = useThunk(deleteData);
 	const handleClick = (id) => {
 		runDeleteData(id);

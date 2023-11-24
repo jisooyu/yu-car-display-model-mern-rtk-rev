@@ -1,6 +1,5 @@
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { unwrapResult } from '@reduxjs/toolkit';
 
 export function useThunk(thunk) {
 	const [isLoading, setIsLoading] = useState(false);
@@ -11,11 +10,9 @@ export function useThunk(thunk) {
 		async (arg) => {
 			try {
 				setIsLoading(true);
-				const resultAction = await dispatch(thunk(arg));
+				const response = await dispatch(thunk(arg));
 				setIsLoading(false);
-				// to extract the payload of the promise from dispatching thunk, use unwrapResult or unwrap
-				const response = unwrapResult(resultAction);
-				return response;
+				return [response];
 			} catch (err) {
 				setIsLoading(false);
 				setError(err);

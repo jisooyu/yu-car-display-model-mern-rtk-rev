@@ -43,13 +43,13 @@ function CarEditForm() {
 		// Function to fetch data by ID
 		const getDataById = async () => {
 			try {
-				const [response] = await runFetchDataById(id);
+				const response = await runFetchDataById(id);
 				if (fetchDataByIdError) {
 					console.error('Error fetching data by ID:', fetchDataByIdError);
 					return;
 				}
+				const carData = response;
 
-				const carData = response.payload;
 				setSelectedCarData({
 					carMakerName: carData.carMakerName,
 					modelYear: carData.modelYear,

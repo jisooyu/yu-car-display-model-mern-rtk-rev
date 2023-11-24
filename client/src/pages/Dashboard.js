@@ -38,7 +38,7 @@ const Dashboard = () => {
 		content = <div>Error fetching data:{loadingDataError.message}</div>;
 	}
 
-	const handleSearch = (e) => {
+	const handleSearchClick = (e) => {
 		setSearchTerm(e.target.value);
 	};
 
@@ -56,17 +56,19 @@ const Dashboard = () => {
 				<Button
 					className='m-5 bg-yellow-300 text-red-500'
 					rounded
-					onClick={handleSearch}
+					onClick={handleSearchClick}
 				>
-					Search
+					Search Model
 				</Button>
 				{content}
 				<GoogleLogoutButton />
 			</div>
 
 			<div>
-				{/* <CarPage data={data} /> */}
-				<CarDetails data={data} />
+				<CarDetails
+					data={data}
+					searchTerm={searchTerm}
+				/>
 			</div>
 		</>
 	);
