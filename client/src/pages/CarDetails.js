@@ -12,6 +12,7 @@ function CarDetails({ data, searchTerm }) {
 			return;
 		}
 	};
+	
 	const renderedCars = data.map((car) => {
 		return (
 			<div

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { fetchUser } from './store';
-import CarPage from './pages/CarPage';
+import CarSearchPage from './pages/CarSearchPage';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import CarForm from './pages/CarForm';
@@ -36,7 +36,7 @@ function App() {
 				/>
 				<Route
 					path='/raw'
-					element={<CarPage />}
+					element={<CarSearchPage />}
 				/>
 			</Routes>
 		</>
