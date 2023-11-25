@@ -7,6 +7,7 @@ import Button from '../components/Button';
 import { useThunk } from '../hooks/use-thunk';
 import { fetchData } from '../store';
 import CarSearchPage from './CarSearchPage';
+import SearchBar from '../components/Search';
 
 const Dashboard = () => {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -41,10 +42,6 @@ const Dashboard = () => {
 	const handleSearchChange = (e) => {
 		setSearchTerm(e.target.value);
 	};
-	const handleSerchSubmit = (e) => {
-		e.preventDefault();
-		console.log(searchTerm);
-	};
 
 	return (
 		<>
@@ -57,23 +54,10 @@ const Dashboard = () => {
 				>
 					Create Car Data
 				</Button>
-
-				<form onSubmit={handleSerchSubmit}>
-					<label
-						htmlFor='Search Model'
-						className='text-yellow-300'
-					>
-						Search Model
-					</label>
-					<input
-						type='text'
-						id='searchModel'
-						placeholder='car model to search'
-						value={searchTerm}
-						className='m-5 px-3 py-1.5 border h-8 bg-yellow-400 text-red-500 rounded-full border-yellow-400'
-						onChange={handleSearchChange}
-					/>
-				</form>
+				<SearchBar
+					searchTerm={searchTerm}
+					handleSearchChange={handleSearchChange}
+				/>
 				{content}
 				<GoogleLogoutButton />
 			</div>
