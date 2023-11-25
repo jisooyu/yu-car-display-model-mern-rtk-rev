@@ -26,19 +26,26 @@ const Dashboard = () => {
 			doFetchData();
 		}
 	}, [doFetchData, data]);
-	const handleSearchChange = (e) => {
-		setSearchTerm(e.target.value);
-	};
+
 	let content;
 	if (isLoadingData) {
 		content = (
 			<Skeleton
-				times={20}
+				times={6}
 				className='h-10 w-full'
 			/>
 		);
-	} else {
-		content = (
+	} else if (loadingDataError) {
+		content = <div>Error fetching data:{loadingDataError.message}</div>;
+	}
+
+	const handleSearchChange = (e) => {
+		setSearchTerm(e.target.value);
+	};
+
+	return (
+		<>
+			{content}
 			<div className='h-20 w-auto flex flex-row justify-between items-center bg-blue-400'>
 				<Button
 					onClick={() => navigate(user ? '/form' : '/')}
@@ -52,16 +59,10 @@ const Dashboard = () => {
 					searchTerm={searchTerm}
 					handleSearchChange={handleSearchChange}
 				/>
+
 				<GoogleLogoutButton />
 			</div>
-		);
-	}
-	if (loadingDataError) {
-		content = <div>Error fetching data:{loadingDataError.message}</div>;
-	}
-	return (
-		<>
-			{content}
+
 			<div>
 				<CarSearchPage
 					data={data}
