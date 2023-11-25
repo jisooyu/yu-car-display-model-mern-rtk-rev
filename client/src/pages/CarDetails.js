@@ -12,7 +12,7 @@ function CarDetails({ data, searchTerm }) {
 			return;
 		}
 	};
-	
+
 	const renderedCars = data.map((car) => {
 		return (
 			<div
@@ -44,13 +44,13 @@ function CarDetails({ data, searchTerm }) {
 							)
 						)}
 					</p>
-					<div className='flex flex-row mt-2'>
+					<div className='flex flex-row mt-2 flex-wrap'>
 						{car.s3ImageUrl.map((imageUrl, index) => (
 							<img
 								key={`${imageUrl}+${index}`}
 								src={imageUrl}
 								alt={`Car shot ${index + 1}`}
-								className='h-72 w-84 m-2'
+								className='w-full md:w-1/2 lg:w-1/3 xl:w-1/3 object-cover m-2'
 							/>
 						))}
 					</div>
